@@ -6,10 +6,11 @@ var ul = document.querySelector('#result');
 var number = document.querySelector("#members");
 var firstText = document.querySelector(".firsttext");
 var secondText = document.querySelector(".secondtext");
+var makeid = 0;
 
 button.addEventListener('click', function () {
   ul.innerText = "";
-   for(var c = 0; c < 2;c++){
+   for(var c = 0; c < 2; c++){
        var gender = document.createElement('div');
         gender.setAttribute('class','genderType');
     for(var k = 0; k < number.value; k++){
@@ -24,10 +25,18 @@ button.addEventListener('click', function () {
         li.appendChild(inputfield)
         for(var i = 0; i < number.value; i++){
             var select = document.createElement('select');
+            makeid += 1;
+            select.setAttribute("id", "select" + makeid)
             for(var j = 0; j < number.value; j++){
                 var option = document.createElement('option');
-                option.setAttribute('value','korte');
-                option.innerText = "option" + (j+1);
+                option.setAttribute('value', (j+1));
+                if(c==0){
+                    option.innerText = secondText.value + " " + (j+1);
+                } else {
+                    option.innerText =  firstText.value + " " + (j+1);
+                }
+
+                // option.innerText = "option" + (j+1);
                 select.appendChild(option);
             }
             li.appendChild(select)
